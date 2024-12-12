@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[beta]Huri Comprehensive Search System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .firefox-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .firefox-logo img {
+            max-width: 250px;
+            width: 50%;
+        }
+
+        .search-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .search-engines {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-engines label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 5px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #222;
+            color: white;
+        }
+
+        .search-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #45a049;
+        }
+
+        /* タブレット向けスタイル */
+        @media screen and (min-width: 768px) {
+            .container {
+                max-width: 700px;
+                padding: 30px;
+            }
+
+            .search-engines {
+                gap: 20px;
+            }
+        }
+
+        /* デスクトップ向けスタイル */
+        @media screen and (min-width: 1024px) {
+            .container {
+                max-width: 800px;
+                padding: 40px;
+            }
+
+            .firefox-logo img {
+                max-width: 300px;
+            }
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+}
+
+.container .firefox-logo p{
+    font-weight: 1000;
+    font-size: larger;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="firefox-logo">
+            <img src="Fx-Browser-lockup-horizontal-white.svg" alt="Firefox Logo">
+            <p id="huri1">Huri Comprehensive Search System</p>
+        </div>
+        <div class="search-container">
+            <form id="searchForm" method="get" target="_blank">
+                <div class="search-engines">
+                    <label>
+                        <input type="radio" name="engine" value="https://duckduckgo.com/" checked>
+                        DuckDuckGo
+                    </label>
+                    <label>
+                        <input type="radio" name="engine" value="https://www.google.com/search">
+                        Google
+                    </label>
+                    <label>
+                        <input type="radio" name="engine" value="https://www.bing.com/search">
+                        Bing
+                    </label>
+                </div>
+                <input type="text"
+                        name="q"
+                        class="search-input"
+                        placeholder="キーワードを入力してください"
+                        required
+                        aria-label="検索キーワード">
+
+                <button type="submit"
+                        class="search-button"
+                        aria-label="検索実行">
+                    検索
+                </button>
+            </form>
+        </div>
+        <h3>※beta version 1.0 update 2024/12/12</h3>
+    </div>
+
+    <footer>
+        <p><strong>“Mozilla, Firefox and the Firefox logo are trademarks of the Mozilla Foundation in the U.S. and other countries.”</strong></p>
+        <p>&copy; 2024 Freedomhuri All rights reserved</p>
+    </footer>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            const searchInput = this.querySelector('input[name="q"]');
+
+            // 空の検索の防止
+            if (!searchInput.value.trim()) {
+                e.preventDefault();
+                alert('検索キーワードを入力してください');
+                return;
+            }
+            const selectedEngine = document.querySelector('input[name="engine"]:checked').value;
+            this.action = selectedEngine;
+            // セキュリティ属性の追加
+            this.setAttribute('rel', 'noopener noreferrer');
+        });
+    </script>
+</body>
+</html>
