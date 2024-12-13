@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,9 +126,27 @@
     font-weight: 1000;
     font-size: larger;
 }
+
+#browser-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            z-index: 1000;
+            font-size: 18px;
+            height: 25em;
+        }
     </style>
 </head>
 <body>
+    <div id="browser-warning">
+        Oops! Your browser is not Firefox! This site is built based on Firefox.
+    </div>
     <div class="container">
         <div class="firefox-logo">
             <img src="Fx-Browser-lockup-horizontal-white.svg" alt="Firefox Logo">
@@ -142,8 +160,8 @@
                         DuckDuckGo
                     </label>
                     <label>
-                        <input type="radio" name="engine" value="https://www.google.com/search">
-                        Google
+                        <input type="radio" name="engine" value="https://www.google.com/search" checked>
+                         Google
                     </label>
                     <label>
                         <input type="radio" name="engine" value="https://www.bing.com/search">
@@ -153,14 +171,14 @@
                 <input type="text"
                         name="q"
                         class="search-input"
-                        placeholder="キーワードを入力してください"
+                        placeholder="Please enter a keyword.※日本語入力可"
                         required
                         aria-label="検索キーワード">
 
                 <button type="submit"
                         class="search-button"
                         aria-label="検索実行">
-                    検索
+                    search
                 </button>
             </form>
         </div>
@@ -172,7 +190,7 @@
             <a href="https://translate.google.com/" target="_blank"><button>google.com</button></a>
             
         </div>
-        <h3>※beta version 1.1 update 2024/12/13</h3>
+        <h3>※beta version 1.1.0 update 2024/12/13</h3>
         <a href="update.html">update-release-log</a>
     </div>
 
@@ -188,7 +206,7 @@
             // 空の検索の防止
             if (!searchInput.value.trim()) {
                 e.preventDefault();
-                alert('検索キーワードを入力してください');
+                alert('Please enter a keyword.');
                 return;
             }
             const selectedEngine = document.querySelector('input[name="engine"]:checked').value;
@@ -196,6 +214,27 @@
             // セキュリティ属性の追加
             this.setAttribute('rel', 'noopener noreferrer');
         });
+    </script>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ユーザーエージェントを取得
+            var userAgent = navigator.userAgent.toLowerCase();
+            
+            // Firefoxかどうかを判定
+            var isFirefox = userAgent.indexOf('firefox') > -1;
+            
+            // Firefoxでない場合
+            if (!isFirefox) {
+                // JavaScriptアラートを表示
+                alert('Oops! Your browser is not Firefox! This site is built based on Firefox.');
+                
+                // 赤色のメッセージを画面に表示
+                var warningElement = document.getElementById('browser-warning');
+                warningElement.style.display = 'block';
+            }
+        });
+
     </script>
 </body>
 </html>
