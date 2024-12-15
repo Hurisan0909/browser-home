@@ -48,6 +48,13 @@
             margin-top: 20px;
         }
 
+        .search-container3 {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
         .search-engines {
             display: flex;
             justify-content: center;
@@ -141,6 +148,31 @@
             font-size: 18px;
             height: 25em;
         }
+
+        button{
+            width: auto;
+            height: 30px;
+            background-color: #E0E0E0;
+            color: #000;
+            border-radius: 50px;
+            padding: 5px;
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #000;
+            color: #fff;
+            
+        }
+
+        .java{
+    display: block;
+    background-color: #000;
+    color: red;
+    padding: 10px;
+    border: 3px solid #fff;
+        }
     </style>
 </head>
 <body>
@@ -152,6 +184,12 @@
             <img src="Fx-Browser-lockup-horizontal-white.svg" alt="Firefox Logo">
             <p id="huri1">Huri Comprehensive Search System</p>
         </div>
+        <noscript>
+            <div class="java">
+                JavaScript is OFF! Please turn it ON!
+                <br>Javascriptがオフです！オンにしてください！
+            </div>
+        </noscript>
         <div class="search-container">
             <form id="searchForm" method="get" target="_blank">
                 <div class="search-engines">
@@ -161,7 +199,7 @@
                     </label>
                     <label>
                         <input type="radio" name="engine" value="https://www.google.com/search" checked>
-                         Google
+                        Google
                     </label>
                     <label>
                         <input type="radio" name="engine" value="https://www.bing.com/search">
@@ -190,7 +228,13 @@
             <a href="https://translate.google.com/" target="_blank"><button>google.com</button></a>
             
         </div>
-        <h3>※beta version 1.1.0 update 2024/12/13</h3>
+
+        <div class="search-container3">
+            <h4>Pin-tool-box</h4>
+            <a href="https://youtube.com/" target="_blank"><button>youtube</button></a>
+            <a href="https://x.com/" target="_blank"><button>X(旧Twitter)</button></a>
+        </div>
+        <h3>※beta version 1.2 update 2024/12/15</h3>
         <a href="update.html">update-release-log</a>
     </div>
 
